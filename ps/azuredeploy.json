@@ -1,11 +1,17 @@
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.1",
+    "contentVersion": "1.0.0.2",
     "parameters": {
         "vnet": {
             "type": "string",
             "metadata": {
                 "description": "VNET Name"
+            }
+        },
+        "vnetaddress": {
+            "type": "Array",
+            "metadata": {
+                "description": "VNET Address Space"
             }
         }
     },
@@ -21,9 +27,7 @@
             },
             "properties": {
                 "addressSpace": {
-                    "addressPrefixes": [
-                        "10.10.0.0/16"
-                    ]
+                    "addressPrefixes": "[parameters('vnetaddress')]"
                 },
                 "subnets": [
                     {
