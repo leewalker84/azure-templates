@@ -10,6 +10,12 @@
                 "description": "Name of VNet"
             }
         },
+        "VNetPrefix": {
+            "type": "string",
+            "metadata": {
+                "description": "Address range for subnet"
+            }
+        },
         "Subnet1Name": {
            "type": "string",
            "minLength": 3,
@@ -48,7 +54,7 @@
             "properties": {
                 "addressSpace": {
                     "addressPrefixes": [
-                        "10.0.0.0/16"
+                        "[parameters('VNetPrefix')]"
                     ]
                 },
                 "subnets": [
