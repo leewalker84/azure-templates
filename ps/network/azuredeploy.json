@@ -9,6 +9,30 @@
            "metadata": {
                 "description": "Name of VNet"
             }
+        },
+        "Subnet1Name": {
+           "type": "string",
+           "minLength": 3,
+           "maxLength": 24,
+           "metadata": {
+                "description": "Name of subnet 1"
+            }
+        },
+        "Subnet2Name": {
+           "type": "string",
+           "minLength": 3,
+           "maxLength": 24,
+           "metadata": {
+                "description": "Name of subnet 2"
+            }
+        },
+        "Subnet3Name": {
+           "type": "string",
+           "minLength": 3,
+           "maxLength": 24,
+           "metadata": {
+                "description": "Name of subnet 3"
+            }
         }
     },
     "variables": {},
@@ -29,19 +53,19 @@
                 },
                 "subnets": [
                     {
-                        "name": "Subnet-1",
+                        "name": "[parameters('Subnet1Name')]",
                         "properties": {
                             "addressPrefix": "10.0.0.0/24"
                         }
                     },
                     {
-                        "name": "Subnet-2",
+                        "name": "[parameters('Subnet2Name')]",
                         "properties": {
                             "addressPrefix": "10.0.1.0/24"
                         }
                     },
                     {
-                        "name": "Subnet-3",
+                        "name": "[parameters('Subnet3Name')]",
                         "properties": {
                             "addressPrefix": "10.0.2.0/24"
                         }
