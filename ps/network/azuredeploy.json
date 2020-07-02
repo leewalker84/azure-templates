@@ -13,7 +13,7 @@
         "VNetPrefix": {
             "type": "string",
             "metadata": {
-                "description": "Address range for subnet"
+                "description": "Address range for VNet"
             }
         },
         "Subnet1Name": {
