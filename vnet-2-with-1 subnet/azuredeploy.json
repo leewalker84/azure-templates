@@ -2,21 +2,21 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "VNetName": {
+        "VNet1Name": {
            "type": "string",
            "minLength": 3,
            "maxLength": 24,
            "metadata": {
-                "description": "Name of VNet"
+                "description": "Name of VNet 1"
             }
         },
-        "VNetPrefix": {
+        "VNet1Prefix": {
             "type": "string",
             "metadata": {
-                "description": "Address range for VNet"
+                "description": "Address range for VNet 1"
             }
         },
-        "Subnet1Name": {
+        "VNet1SubnetName": {
            "type": "string",
            "minLength": 3,
            "maxLength": 24,
@@ -24,34 +24,86 @@
                 "description": "Name of subnet 1"
             }
         },
-        "Subnet1Prefix": {
+        "VNet1SubnetPrefix": {
             "type": "string",
             "metadata": {
                 "description": "Address range for Subnet1"
+            }
+        },
+        "VNet2Name": {
+           "type": "string",
+           "minLength": 3,
+           "maxLength": 24,
+           "metadata": {
+                "description": "Name of VNet 2"
+            }
+        },
+        "VNet2Prefix": {
+            "type": "string",
+            "metadata": {
+                "description": "Address range for VNet 2"
+            }
+        },
+        "VNet2SubnetName": {
+           "type": "string",
+           "minLength": 3,
+           "maxLength": 24,
+           "metadata": {
+                "description": "Name of subnet 2"
+            }
+        },
+        "VNet2SubnetPrefix": {
+            "type": "string",
+            "metadata": {
+                "description": "Address range for Subnet2"
             }
         }
     },
     "variables": {},
     "resources": [
         {
-            "name": "[parameters('VNetName')]", 
+            "name": "[parameters('VNet1Name')]", 
             "type": "Microsoft.Network/virtualNetworks",
             "apiVersion": "2018-08-01",
             "location": "[resourceGroup().location]",
             "tags": {
-                "displayName": "[parameters('VNetName')]"
+                "displayName": "[parameters('VNet1Name')]"
             },
             "properties": {
                 "addressSpace": {
                     "addressPrefixes": [
-                        "[parameters('VNetPrefix')]"
+                        "[parameters('VNet1Prefix')]"
                     ]
                 },
                 "subnets": [
                     {
-                        "name": "[parameters('Subnet1Name')]",
+                        "name": "[parameters('VNet1SubnetName')]",
                         "properties": {
-                            "addressPrefix": "[parameters('Subnet1Prefix')]"
+                            "addressPrefix": "[parameters('VNet1SubnetPrefix')]"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "[parameters('VNet2Name')]", 
+            "type": "Microsoft.Network/virtualNetworks",
+            "apiVersion": "2018-08-01",
+            "location": "[resourceGroup().location]",
+            "tags": {
+                "displayName": "[parameters('VNet2Name')]"
+            },
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "[parameters('VNet2Prefix')]"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "[parameters('VNet2SubnetName')]",
+                        "properties": {
+                            "addressPrefix": "[parameters('VNet2SubnetPrefix')]"
                         }
                     }
                 ]
